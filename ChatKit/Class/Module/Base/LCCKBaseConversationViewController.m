@@ -47,8 +47,26 @@ static CGFloat const LCCKScrollViewInsetTop = 20.f;
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.equalTo(self.view);
         make.height.mas_greaterThanOrEqualTo(@(kLCCKChatBarMinHeight));
-        make.bottom.equalTo(self.view.mas_bottomMargin);
+        if (self isPhoneX) {
+            make.bottom.mas_equalTo(-34);
+        } else{
+            make.bottom.equalTo(self.view.mas_bottomMargin);
+        }
     }];
+}
+
+- (BOOL)isPhoneX {
+    BOOL iPhoneX = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {//判断是否是手机
+        return iPhoneX;
+    }
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneX = YES;
+        }
+    }
+    return iPhoneX;
 }
 
 - (void)initilzer {
