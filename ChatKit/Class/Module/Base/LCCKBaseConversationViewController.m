@@ -47,6 +47,7 @@ static CGFloat const LCCKScrollViewInsetTop = 20.f;
     [self.chatBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.bottom.equalTo(self.view);
         make.height.mas_greaterThanOrEqualTo(@(kLCCKChatBarMinHeight));
+        make.bottom.equalTo(self.view.mas_bottomMargin);
     }];
 }
 
