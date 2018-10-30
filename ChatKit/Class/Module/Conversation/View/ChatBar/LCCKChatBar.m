@@ -282,13 +282,41 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     [self textViewDidChange:self.textView shouldCacheText:shouldCacheText];
 }
 
-- (void)updateChatBarKeyBoardConstraints {
+- (void)updateChatBarKeyBoardConstraintsShow {
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-self.keyboardSize.height);
     }];
     [UIView animateWithDuration:LCCKAnimateDuration animations:^{
         [self layoutIfNeeded];
     } completion:nil];
+}
+
+- (void)updateChatBarKeyBoardConstraintsHide {
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        if([self isPhoneX]){
+            make.bottom.mas_equalTo(-self.keyboardSize.height-34);
+        } else{
+            make.bottom.mas_equalTo(-self.keyboardSize.height);
+        }
+        
+    }];
+    [UIView animateWithDuration:LCCKAnimateDuration animations:^{
+        [self layoutIfNeeded];
+    } completion:nil];
+}
+
+- (BOOL)isPhoneX {
+    BOOL iPhoneX = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {//判断是否是手机
+        return iPhoneX;
+    }
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneX = YES;
+        }
+    }
+    return iPhoneX;
 }
 
 #pragma mark - 核心方法
@@ -446,7 +474,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     if (_showType == LCCKFunctionViewShowKeyboard) {
         _showType = LCCKFunctionViewShowNothing;
     }
-    [self updateChatBarKeyBoardConstraints];
+    [self updateChatBarKeyBoardConstraintsHide];
     [self updateChatBarConstraintsIfNeeded];
 }
 
@@ -467,7 +495,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
         return;
     }
     self.allowTextViewContentOffset = YES;
-    [self updateChatBarKeyBoardConstraints];
+    [self updateChatBarKeyBoardConstraintsShow];
     self.showType = LCCKFunctionViewShowKeyboard;
 }
 
