@@ -290,25 +290,6 @@
     return self;
 }
 
-- (instancetype)initWithLocalPositionPhoto:(UIImage *)localPositionPhoto
-                                  location:(LocationInfo *)location
-                                  senderId:(NSString *)senderId
-                                    sender:(id<LCCKUserDelegate>)sender
-                                 timestamp:(NSTimeInterval)timestamp
-                           serverMessageId:(NSString *)serverMessageId {
-    self = [super init];
-    if (self) {
-        _localPositionPhoto = localPositionPhoto;
-        _location = location;
-        _sender = sender;
-        _senderId = senderId;
-        _timestamp = timestamp;
-        _serverMessageId = serverMessageId;
-        _mediaType = kAVIMMessageMediaTypeLocation;
-    }
-    return self;
-}
-
 + (id)messageWithAVIMTypedMessage:(AVIMTypedMessage *)message {
     //FIXME:自定义消息
     if ([message lcck_isCustomMessage]) {

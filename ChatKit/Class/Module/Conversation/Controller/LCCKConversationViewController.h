@@ -10,7 +10,6 @@
 
 #import "LCCKChat.h"
 #import "LCCKBaseConversationViewController.h"
-#import "LocationInfo.h"
 
 FOUNDATION_EXTERN NSString *const LCCKConversationViewControllerErrorDomain;
 
@@ -106,7 +105,6 @@ FOUNDATION_EXTERN NSString *const LCCKConversationViewControllerErrorDomain;
  *            发送前必须检查 `isAvailable` 属性是否为YES, 确保发送行为是在 conversation 被 fetch 之后进行的。
  */
 - (void)sendLocationMessageWithLocationCoordinate:(CLLocationCoordinate2D)locationCoordinate locatioTitle:(NSString *)locationTitle;
-- (void)sendLocationMessageWithLocationInfo:(LocationInfo *)location;
 
 /*!
  * 本地消息，仅仅在本地展示，不会发送到服务端

@@ -55,7 +55,6 @@
     #import <ChatKit/NSObject+LCCKExtension.h>
     #import <ChatKit/LCCKChatMessageCell.h>
     #import <ChatKit/LCCKConstants.h>
-    #import <ChatKit/LocationInfo.h>
 
 #else
 
@@ -93,7 +92,6 @@
     #import "NSObject+LCCKExtension.h"
     #import "LCCKChatMessageCell.h"
     #import "LCCKConstants.h"
-    #import "LocationInfo.h"
 
 #endif
 
