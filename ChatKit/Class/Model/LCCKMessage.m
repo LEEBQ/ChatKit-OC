@@ -304,7 +304,7 @@
         _senderId = senderId;
         _timestamp = timestamp;
         _serverMessageId = serverMessageId;
-        _mediaType = kAVIMMessageMediaTypeCustomLocation;
+        _mediaType = kAVIMMessageMediaTypeLocation;
     }
     return self;
 }

@@ -44,12 +44,6 @@
             //TODO:
             break;
         }
-        case kAVIMMessageMediaTypeCustomLocation: {
-            avimTypedMessage = [AVIMLocationMessage messageWithText:message.location.addressNameText
-                                                           location:message.location
-                                                         attributes:nil];
-            break;
-        }
     }
     [avimTypedMessage setObject:@(LCCK_CURRENT_TIMESTAMP) forKey:@"sendTimestamp"];
     return avimTypedMessage;
