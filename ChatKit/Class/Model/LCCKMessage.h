@@ -35,6 +35,7 @@
 @property (nonatomic, strong, readonly) UIImage *localPositionPhoto;
 @property (nonatomic, copy, readonly) NSString *geolocations;
 @property (nonatomic, strong, readonly) CLLocation *location;
+@property (nonatomic, strong, readonly) NSDictionary *locationAttr;
 
 @property (nonatomic, assign, readonly) AVIMMessageMediaType mediaType;
 //@property (nonatomic, assign) LCCKConversationType messageGroupType;

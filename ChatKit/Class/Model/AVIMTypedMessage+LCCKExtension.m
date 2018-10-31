@@ -38,7 +38,7 @@
             avimTypedMessage = [AVIMLocationMessage messageWithText:message.geolocations
                                                            latitude:message.location.coordinate.latitude
                                                           longitude:message.location.coordinate.longitude
-                                                         attributes:nil];
+                                                         attributes:message.locationAttr];
             break;
         case kAVIMMessageMediaTypeNone:
             //TODO:

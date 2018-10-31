@@ -286,6 +286,14 @@
         _timestamp = timestamp;
         _serverMessageId = serverMessageId;
         _mediaType = kAVIMMessageMediaTypeLocation;
+        NSNumber *lon = [NSNumber numberWithDouble:location.coordinate.longitude];
+        NSNumber *lat = [NSNumber numberWithDouble:location.coordinate.latitude];
+        _locationAttr = @{
+                          @"lon":lon,
+                          @"lat":lat,
+                          @"addressNameText":geolocations,
+                          @"addressDetailText":@"123"
+                          };
     }
     return self;
 }
