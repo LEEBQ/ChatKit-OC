@@ -35,7 +35,6 @@
 #import "LCCKAlertController.h"
 #import "LCCKPhotoBrowser.h"
 
-
 #if __has_include(<CYLDeallocBlockExecutor/CYLDeallocBlockExecutor.h>)
 #import <CYLDeallocBlockExecutor/CYLDeallocBlockExecutor.h>
 #else
@@ -46,6 +45,8 @@
 #ifdef CYLDebugging
 #import <MLeaksFinder/MLeaksFinder.h>
 #endif
+
+
 
 NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationViewControllerErrorDomain";
 
@@ -358,6 +359,21 @@ NSString *const LCCKConversationViewControllerErrorDomain = @"LCCKConversationVi
                                                               geolocations:locationTitle
                                                                   location:[[CLLocation alloc] initWithLatitude:locationCoordinate.latitude
                                                                                                       longitude:locationCoordinate.longitude]
+                                                                  senderId:self.userId
+                                                                    sender:self.user
+                                                                 timestamp:LCCK_CURRENT_TIMESTAMP
+                                                           serverMessageId:nil];
+    [self makeSureSendValidMessage:message afterFetchedConversationShouldWithAssert:NO];
+    [self.chatViewModel sendMessage:message];
+}
+
+- (void)sendLocationMessageWithLocationInfo:(LocationInfo *)location{
+    
+    LCCKMessage *message = [[LCCKMessage alloc] initWithLocalPositionPhoto:({
+        NSString *imageName = @"message_sender_location";
+        UIImage *image = [UIImage lcck_imageNamed:imageName bundleName:@"MessageBubble" bundleForClass:[self class]];
+        image;})
+                                                                  location:location
                                                                   senderId:self.userId
                                                                     sender:self.user
                                                                  timestamp:LCCK_CURRENT_TIMESTAMP

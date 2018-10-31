@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "LCCKMessageDelegate.h"
+#import <ChatKit/LocationInfo.h>
 
 @class AVIMTypedMessage;
 
@@ -151,6 +152,13 @@
                                   location:(CLLocation *)location
                                     senderId:(NSString *)senderId
                                      sender:(id<LCCKUserDelegate>)sender
+                                 timestamp:(NSTimeInterval)timestamp
+                           serverMessageId:(NSString *)serverMessageId;
+
+- (instancetype)initWithLocalPositionPhoto:(UIImage *)localPositionPhoto
+                                  location:(LocationInfo *)location
+                                  senderId:(NSString *)senderId
+                                    sender:(id<LCCKUserDelegate>)sender
                                  timestamp:(NSTimeInterval)timestamp
                            serverMessageId:(NSString *)serverMessageId;
 
