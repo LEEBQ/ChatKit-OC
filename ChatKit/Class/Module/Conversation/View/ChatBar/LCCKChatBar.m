@@ -90,15 +90,15 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
         make.width.equalTo(self.moreButton.mas_height);
     }];
     
-    [self.faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.moreButton.mas_left).with.offset(-offset);
-        make.bottom.equalTo(self.inputBarBackgroundView.mas_bottom).with.offset(-kChatBarBottomOffset);
-        make.width.equalTo(self.faceButton.mas_height);
-    }];
+//    [self.faceButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self.moreButton.mas_left).with.offset(-offset);
+//        make.bottom.equalTo(self.inputBarBackgroundView.mas_bottom).with.offset(-kChatBarBottomOffset);
+//        make.width.equalTo(self.faceButton.mas_height);
+//    }];
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.voiceButton.mas_right).with.offset(offset);
-        make.right.equalTo(self.faceButton.mas_left).with.offset(-offset);
+        make.right.equalTo(self.moreButton.mas_left).with.offset(-offset);
         make.top.equalTo(self.inputBarBackgroundView).with.offset(kChatBarTextViewBottomOffset);
         make.bottom.equalTo(self.inputBarBackgroundView).with.offset(-kChatBarTextViewBottomOffset);
         make.height.mas_greaterThanOrEqualTo(kLCCKChatBarTextViewFrameMinHeight);
@@ -242,7 +242,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    self.faceButton.selected = self.moreButton.selected = self.voiceButton.selected = NO;
+//    self.faceButton.selected = self.moreButton.selected = self.voiceButton.selected = NO;
     [self showFaceView:NO];
     [self showMoreView:NO];
     [self showVoiceView:NO];
@@ -422,7 +422,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     if (self.voiceButton.selected) {
         return;
     }
-    self.faceButton.selected = self.moreButton.selected = self.voiceButton.selected = NO;
+//    self.faceButton.selected = self.moreButton.selected = self.voiceButton.selected = NO;
     self.showType = LCCKFunctionViewShowNothing;
 }
 
@@ -523,7 +523,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     
     [self.inputBarBackgroundView addSubview:self.voiceButton];
     [self.inputBarBackgroundView addSubview:self.moreButton];
-    [self.inputBarBackgroundView addSubview:self.faceButton];
+//    [self.inputBarBackgroundView addSubview:self.faceButton];
     [self.inputBarBackgroundView addSubview:self.textView];
     [self.inputBarBackgroundView addSubview:self.voiceRecordButton];
     
@@ -589,7 +589,7 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     //显示对应的View
     [self showMoreView:showType == LCCKFunctionViewShowMore && self.moreButton.selected];
     [self showVoiceView:showType == LCCKFunctionViewShowVoice && self.voiceButton.selected];
-    [self showFaceView:showType == LCCKFunctionViewShowFace && self.faceButton.selected];
+//    [self showFaceView:showType == LCCKFunctionViewShowFace && self.faceButton.selected];
     
     switch (showType) {
         case LCCKFunctionViewShowNothing: {
@@ -619,15 +619,15 @@ NSString *const kLCCKBatchDeleteTextSuffix = @"kLCCKBatchDeleteTextSuffix";
     LCCKFunctionViewShowType showType = button.tag;
     //更改对应按钮的状态
     if (button == self.faceButton) {
-        [self.faceButton setSelected:!self.faceButton.selected];
-        [self.moreButton setSelected:NO];
-        [self.voiceButton setSelected:NO];
+//        [self.faceButton setSelected:!self.faceButton.selected];
+//        [self.moreButton setSelected:NO];
+//        [self.voiceButton setSelected:NO];
     } else if (button == self.moreButton){
-        [self.faceButton setSelected:NO];
+//        [self.faceButton setSelected:NO];
         [self.moreButton setSelected:!self.moreButton.selected];
         [self.voiceButton setSelected:NO];
     } else if (button == self.voiceButton){
-        [self.faceButton setSelected:NO];
+//        [self.faceButton setSelected:NO];
         [self.moreButton setSelected:NO];
         [self.voiceButton setSelected:!self.voiceButton.selected];
     }
