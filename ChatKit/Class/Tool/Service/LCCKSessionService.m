@@ -312,6 +312,9 @@ NSString *const LCCKSessionServiceErrorDomain = @"LCCKSessionServiceErrorDomain"
             [LCCKConversationService.sharedInstance insertRecentConversation:conversation shouldRefreshWhenFinished:true];
         }
     }
+    NSUInteger unreadMessagesCount = conversation.unreadMessagesCount;
+    /* 有未读消息产生，请更新 UI，或者拉取对话。 */
+    NSLog(@"未读数有%ld条", unreadMessagesCount);
 }
 
 - (void)conversation:(AVIMConversation *)conversation messageHasBeenUpdated:(AVIMMessage *)message
