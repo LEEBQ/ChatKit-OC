@@ -53,7 +53,7 @@
         header;
     });
     self.tableView.backgroundColor = [[LCCKSettingService sharedInstance] defaultThemeColorForKey:@"TableView-BackgroundColor"];
-//    [self.tableView.mj_header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     !self.viewDidLoadBlock ?: self.viewDidLoadBlock(self);
 }
